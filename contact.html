@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | La Rose Lounge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="https://res.cloudinary.com/daha4jihh/image/upload/v1762878765/La_Rose_Lounge_Logo_pink_guiacx.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .contact-card {
+            transition: all 0.3s ease;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(219, 39, 119, 0.1);
+        }
+        .map-container {
+            filter: grayscale(20%);
+            transition: all 0.3s ease;
+        }
+        .map-container:hover {
+            filter: grayscale(0%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762876060/La_Rose_Lounge_Logo_pink_qznuts.png" alt="La Rose Lounge Logo" class="h-10 w-auto">
+                    <span class="heading-font text-xl text-pink-700 font-bold">La Rose Lounge</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-pink-700 transition duration-300">Home</a>
+                    <a href="rooms.html" class="text-gray-600 hover:text-pink-700 transition duration-300">Rooms</a>
+                    <a href="gallery.html" class="text-gray-600 hover:text-pink-700 transition duration-300">Gallery</a>
+                    <a href="contact.html" class="text-pink-700 font-medium border-b-2 border-pink-700 pb-1">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="tel:0789377351" class="bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition duration-300">
+                        <i class="fas fa-phone mr-2"></i>Book Now
+                    </a>
+                    <button class="md:hidden text-gray-600 focus:outline-none" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white py-4 px-4 shadow-lg" id="mobile-menu">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html" class="text-gray-600 hover:text-pink-700 transition duration-300">Home</a>
+                <a href="rooms.html" class="text-gray-600 hover:text-pink-700 transition duration-300">Rooms</a>
+                <a href="gallery.html" class="text-gray-600 hover:text-pink-700 transition duration-300">Gallery</a>
+                <a href="contact.html" class="text-pink-700 font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 bg-pink-700 text-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="heading-font text-5xl md:text-6xl font-bold mb-6">Contact Us</h1>
+            <p class="text-xl max-w-3xl mx-auto">We're here to help you plan your perfect stay at La Rose Lounge. Get in touch with us today.</p>
+        </div>
+    </section>
+
+    <!-- Contact Methods Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Phone -->
+                <div class="contact-card bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="bg-pink-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-phone text-pink-600 text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-2xl font-bold text-gray-800 mb-4">Call Us</h3>
+                    <p class="text-gray-600 mb-6">Speak directly with our reception team for immediate assistance and reservations.</p>
+                    <a href="tel:0789377351" class="inline-block bg-pink-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pink-700 transition duration-300">
+                        <i class="fas fa-phone mr-2"></i>0789377351
+                    </a>
+                </div>
+                
+                <!-- Email -->
+                <div class="contact-card bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="bg-pink-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-envelope text-pink-600 text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-2xl font-bold text-gray-800 mb-4">Email Us</h3>
+                    <p class="text-gray-600 mb-6">Send us your inquiries and we'll respond within 24 hours with detailed information.</p>
+                    <a href="mailto:connect@laroselounge.com" class="inline-block bg-pink-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pink-700 transition duration-300">
+                        <i class="fas fa-envelope mr-2"></i>connect@laroselounge.com
+                    </a>
+                </div>
+                
+                <!-- Visit -->
+                <div class="contact-card bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="bg-pink-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-map-marker-alt text-pink-600 text-2xl"></i>
+                    </div>
+                    <h3 class="heading-font text-2xl font-bold text-gray-800 mb-4">Visit Us</h3>
+                    <p class="text-gray-600 mb-6">Come see us in person at our beautiful location in Gisenyi, Rwanda.</p>
+                    <a href="#location" class="inline-block bg-pink-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pink-700 transition duration-300">
+                        <i class="fas fa-directions mr-2"></i>Get Directions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Info Section -->
+    <section class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div>
+                    <h2 class="heading-font text-4xl font-bold text-gray-800 mb-2">Send Us a Message</h2>
+                    <p class="text-gray-600 mb-8">Fill out the form below and we'll get back to you as soon as possible.</p>
+                    
+                    <form id="contact-form" class="bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="first-name" class="block text-gray-700 font-medium mb-2">First Name</label>
+                                <input type="text" id="first-name" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500 transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="last-name" class="block text-gray-700 font-medium mb-2">Last Name</label>
+                                <input type="text" id="last-name" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500 transition duration-300" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500 transition duration-300" required>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                            <input type="tel" id="phone" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500 transition duration-300">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                            <select id="subject" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500 transition duration-300" required>
+                                <option value="">Select a subject</option>
+                                <option value="reservation">Room Reservation</option>
+                                <option value="information">General Information</option>
+                                <option value="group-booking">Group Booking</option>
+                                <option value="event">Event Inquiry</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="check-in" class="block text-gray-700 font-medium mb-2">Preferred Check-in Date</label>
+                            <input type="date" id="check-in" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500 transition duration-300">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" rows="5" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500 transition duration-300" placeholder="Tell us how we can help you..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-pink-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-pink-700 transition duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Information -->
+                <div>
+                    <h2 class="heading-font text-4xl font-bold text-gray-800 mb-2">Get In Touch</h2>
+                    <p class="text-gray-600 mb-8">We're always happy to hear from our guests and potential visitors.</p>
+                    
+                    <div class="bg-white rounded-2xl p-8 shadow-lg mb-8">
+                        <h3 class="heading-font text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-pink-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-pink-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Address</h4>
+                                    <p class="text-gray-600">Gisenyi, North Province, Rwanda</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="bg-pink-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone text-pink-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Phone</h4>
+                                    <a href="tel:0789377351" class="text-gray-600 hover:text-pink-700 transition duration-300">0789377351</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="bg-pink-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-pink-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Email</h4>
+                                    <a href="mailto:connect@laroselounge.com" class="text-gray-600 hover:text-pink-700 transition duration-300">connect@laroselounge.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="bg-pink-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-globe text-pink-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Website</h4>
+                                    <a href="https://laroselounge.com" class="text-gray-600 hover:text-pink-700 transition duration-300">laroselounge.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <h3 class="heading-font text-2xl font-bold text-gray-800 mb-6">Business Hours</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex justify-between">
+                                <span class="text-gray-700">Monday - Thursday</span>
+                                <span class="font-semibold text-gray-800">24 Hours</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-700">Friday - Saturday</span>
+                                <span class="font-semibold text-gray-800">24 Hours</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-700">Sunday</span>
+                                <span class="font-semibold text-gray-800">24 Hours</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 p-4 bg-pink-50 rounded-lg">
+                            <p class="text-pink-700 text-sm"><i class="fas fa-info-circle mr-2"></i>Our reception is available 24/7 to assist you with any inquiries or reservations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Map Section -->
+    <section id="location" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-4xl font-bold text-gray-800 mb-4">Our Location</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Find us in the beautiful town of Gisenyi, nestled in the North Province of Rwanda.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="map-container bg-gray-200 h-96 rounded-2xl overflow-hidden shadow-lg mb-8">
+                        <!-- In a real implementation, you would embed a Google Map here -->
+                        <div class="w-full h-full flex items-center justify-center bg-pink-100">
+                            <div class="text-center p-8">
+                                <i class="fas fa-map-marked-alt text-pink-600 text-5xl mb-4"></i>
+                                <h3 class="heading-font text-2xl font-bold text-gray-800 mb-2">Interactive Map</h3>
+                                <p class="text-gray-600 mb-4">Location: Gisenyi, North Province, Rwanda</p>
+                                <a href="https://maps.google.com/?q=Gisenyi,North+Province,Rwanda" target="_blank" class="inline-block bg-pink-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pink-700 transition duration-300">
+                                    Open in Google Maps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-2xl p-6">
+                        <h3 class="heading-font text-2xl font-bold text-gray-800 mb-4">Getting Here</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="bg-pink-100 p-2 rounded-full mr-4 mt-1">
+                                    <i class="fas fa-car text-pink-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">By Car</h4>
+                                    <p class="text-gray-600">We offer free parking for all our guests. The motel is easily accessible from the main road.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-pink-100 p-2 rounded-full mr-4 mt-1">
+                                    <i class="fas fa-plane text-pink-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">By Air</h4>
+                                    <p class="text-gray-600">The nearest airport is Kigali International Airport. We can arrange airport transfers upon request.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-pink-100 p-2 rounded-full mr-4 mt-1">
+                                    <i class="fas fa-bus text-pink-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">By Bus</h4>
+                                    <p class="text-gray-600">Regular bus services connect Gisenyi to other major towns in Rwanda.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="heading-font text-3xl font-bold text-gray-800 mb-6">About Gisenyi</h3>
+                    <p class="text-gray-600 mb-6">Gisenyi is a beautiful resort town located on the northern shore of Lake Kivu, in western Rwanda. Known for its stunning lake views, vibrant culture, and pleasant climate, it's a popular destination for both local and international tourists.</p>
+                    
+                    <p class="text-gray-600 mb-8">The town offers a variety of attractions including beautiful beaches, hot springs, and the nearby Volcanoes National Park, home to the famous mountain gorillas.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="bg-pink-50 rounded-lg p-4 text-center">
+                            <i class="fas fa-umbrella-beach text-pink-600 text-2xl mb-2"></i>
+                            <h4 class="font-semibold text-gray-800">Lake Kivu</h4>
+                            <p class="text-gray-600 text-sm">Beautiful beaches and water activities</p>
+                        </div>
+                        
+                        <div class="bg-pink-50 rounded-lg p-4 text-center">
+                            <i class="fas fa-mountain text-pink-600 text-2xl mb-2"></i>
+                            <h4 class="font-semibold text-gray-800">Volcanoes</h4>
+                            <p class="text-gray-600 text-sm">Stunning volcanic landscapes</p>
+                        </div>
+                        
+                        <div class="bg-pink-50 rounded-lg p-4 text-center">
+                            <i class="fas fa-spa text-pink-600 text-2xl mb-2"></i>
+                            <h4 class="font-semibold text-gray-800">Hot Springs</h4>
+                            <p class="text-gray-600 text-sm">Natural thermal springs</p>
+                        </div>
+                        
+                        <div class="bg-pink-50 rounded-lg p-4 text-center">
+                            <i class="fas fa-gem text-pink-600 text-2xl mb-2"></i>
+                            <h4 class="font-semibold text-gray-800">Culture</h4>
+                            <p class="text-gray-600 text-sm">Rich Rwandan heritage</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-pink-700 text-white rounded-2xl p-6">
+                        <h4 class="heading-font text-xl font-bold mb-2">Special Offer</h4>
+                        <p class="mb-4">Book directly with us and receive a complimentary breakfast for your entire stay!</p>
+                        <a href="tel:0789377351" class="inline-block bg-white text-pink-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                            Call to Claim Offer
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-100">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Find answers to common questions about staying at La Rose Lounge.</p>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="divide-y divide-gray-200">
+                    <div class="faq-item p-6">
+                        <button class="faq-question w-full flex justify-between items-center text-left">
+                            <h3 class="text-lg font-semibold text-gray-800">What time is check-in and check-out?</h3>
+                            <i class="fas fa-chevron-down text-pink-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer mt-4 hidden">
+                            <p class="text-gray-600">Check-in is from 2:00 PM and check-out is until 11:00 AM. Early check-in and late check-out may be available upon request, subject to availability.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item p-6">
+                        <button class="faq-question w-full flex justify-between items-center text-left">
+                            <h3 class="text-lg font-semibold text-gray-800">Do you offer airport transfers?</h3>
+                            <i class="fas fa-chevron-down text-pink-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer mt-4 hidden">
+                            <p class="text-gray-600">Yes, we offer airport transfer services from Kigali International Airport. Please contact us in advance to arrange this service.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item p-6">
+                        <button class="faq-question w-full flex justify-between items-center text-left">
+                            <h3 class="text-lg font-semibold text-gray-800">Is parking available at the motel?</h3>
+                            <i class="fas fa-chevron-down text-pink-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer mt-4 hidden">
+                            <p class="text-gray-600">Yes, we provide free secured parking for all our guests throughout their stay.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item p-6">
+                        <button class="faq-question w-full flex justify-between items-center text-left">
+                            <h3 class="text-lg font-semibold text-gray-800">Do you have facilities for events or meetings?</h3>
+                            <i class="fas fa-chevron-down text-pink-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer mt-4 hidden">
+                            <p class="text-gray-600">Yes, we have spaces available for small events, meetings, and gatherings. Please contact us for more information about our event facilities and services.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item p-6">
+                        <button class="faq-question w-full flex justify-between items-center text-left">
+                            <h3 class="text-lg font-semibold text-gray-800">What payment methods do you accept?</h3>
+                            <i class="fas fa-chevron-down text-pink-600 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer mt-4 hidden">
+                            <p class="text-gray-600">We accept cash (Rwandan Francs), credit cards (Visa, MasterCard), and mobile money payments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <p class="text-gray-600">Still have questions? <a href="tel:0789377351" class="text-pink-600 font-semibold hover:text-pink-700 transition duration-300">Call us directly</a> for immediate assistance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-pink-700 text-white">
+        <div class="max-w-5xl mx-auto text-center px-4">
+            <h2 class="heading-font text-4xl font-bold mb-6">Ready to Book Your Stay?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Contact us now to reserve your preferred room and experience the comfort of La Rose Lounge.</p>
+            
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
+                <a href="tel:0789377351" class="bg-white text-pink-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                    <i class="fas fa-phone mr-2"></i>Call to Book
+                </a>
+                <a href="mailto:connect@laroselounge.com" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-pink-700 transition duration-300">
+                    <i class="fas fa-envelope mr-2"></i>Email Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762876060/La_Rose_Lounge_Logo_pink_qznuts.png" alt="La Rose Lounge Logo" class="h-8 w-auto">
+                        <span class="heading-font text-xl font-bold">La Rose Lounge</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Luxury accommodation in the heart of Gisenyi, Rwanda.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="rooms.html" class="text-gray-400 hover:text-white transition duration-300">Rooms & Suites</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white transition duration-300">Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Contact Info</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-pink-500"></i>
+                            <span class="text-gray-400">Gisenyi, North Province, Rwanda</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-pink-500"></i>
+                            <a href="tel:0789377351" class="text-gray-400 hover:text-white transition duration-300">0789377351</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-pink-500"></i>
+                            <a href="mailto:connect@laroselounge.com" class="text-gray-400 hover:text-white transition duration-300">connect@laroselounge.com</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for special offers and updates.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-800">
+                        <button type="submit" class="bg-pink-600 px-4 py-2 rounded-r-lg hover:bg-pink-700 transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 La Rose Lounge. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real implementation, you would send the form data to a server
+            // For this demo, we'll just show a success message
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.closest('.faq-item');
+                const answer = faqItem.querySelector('.faq-answer');
+                const icon = button.querySelector('i');
+                
+                // Toggle current answer
+                answer.classList.toggle('hidden');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+                
+                // Close other open answers
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        item.querySelector('.faq-answer').classList.add('hidden');
+                        item.querySelector('i').classList.remove('fa-chevron-up');
+                        item.querySelector('i').classList.add('fa-chevron-down');
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
