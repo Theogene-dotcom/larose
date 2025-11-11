@@ -34,6 +34,45 @@
         .room-feature:hover {
             background-color: #fdf2f8;
         }
+        .whatsapp-float {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .french {
+            display: none;
+        }
+        .language-dropdown {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .language-dropdown.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #db2777;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -41,21 +80,64 @@
     <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center py-4">
-                <div class="flex items-center space-x-2">
+                <div class="flex items-center space-x-3">
                     <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762876060/La_Rose_Lounge_Logo_pink_qznuts.png" alt="La Rose Lounge Logo" class="h-10 w-auto">
-                    <span class="heading-font text-xl text-pink-700 font-bold">La Rose Lounge</span>
+                    <div>
+                        <span class="heading-font text-xl text-pink-700 font-bold block">La Rose Lounge</span>
+                        <span class="text-xs text-gray-500 english">Luxury Motel</span>
+                        <span class="text-xs text-gray-500 french">Motel de Luxe</span>
+                    </div>
                 </div>
                 
-                <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-gray-600 hover:text-pink-700 transition duration-300">Home</a>
-                    <a href="rooms.html" class="text-pink-700 font-medium border-b-2 border-pink-700 pb-1">Rooms</a>
-                    <a href="gallery.html" class="text-gray-600 hover:text-pink-700 transition duration-300">Gallery</a>
-                    <a href="contact.html" class="text-gray-600 hover:text-pink-700 transition duration-300">Contact</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-pink-700 transition duration-300">
+                        <span class="english">Home</span>
+                        <span class="french">Accueil</span>
+                    </a>
+                    <a href="rooms.html" class="nav-link text-pink-700 font-medium active">
+                        <span class="english">Rooms</span>
+                        <span class="french">Chambres</span>
+                    </a>
+                    <a href="gallery.html" class="nav-link text-gray-600 hover:text-pink-700 transition duration-300">
+                        <span class="english">Gallery</span>
+                        <span class="french">Galerie</span>
+                    </a>
+                    <a href="contact.html" class="nav-link text-gray-600 hover:text-pink-700 transition duration-300">
+                        <span class="english">Contact</span>
+                        <span class="french">Contact</span>
+                    </a>
+                    
+                    <!-- Language Selector -->
+                    <div class="relative ml-4">
+                        <button id="language-toggle" class="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:text-pink-700 transition duration-300 border border-gray-300 rounded-lg bg-gray-50 hover:bg-white">
+                            <i class="fas fa-globe"></i>
+                            <span id="current-language" class="font-medium">EN</span>
+                            <i class="fas fa-chevron-down text-xs transition-transform duration-300" id="language-chevron"></i>
+                        </button>
+                        <div id="language-dropdown" class="language-dropdown absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-xl py-2 z-50 border border-gray-200">
+                            <button class="language-option w-full text-left px-4 py-3 text-gray-800 hover:bg-pink-50 flex items-center justify-between border-b border-gray-100" data-lang="en">
+                                <div class="flex items-center space-x-3">
+                                    <span class="w-6 h-4 bg-blue-500 rounded-sm"></span>
+                                    <span>English</span>
+                                </div>
+                                <i class="fas fa-check text-pink-600 text-sm" id="check-en"></i>
+                            </button>
+                            <button class="language-option w-full text-left px-4 py-3 text-gray-800 hover:bg-pink-50 flex items-center justify-between" data-lang="fr">
+                                <div class="flex items-center space-x-3">
+                                    <span class="w-6 h-4 bg-red-500 rounded-sm"></span>
+                                    <span>Français</span>
+                                </div>
+                                <i class="fas fa-check text-pink-600 text-sm hidden" id="check-fr"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="flex items-center space-x-4">
-                    <a href="tel:0789377351" class="bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition duration-300">
-                        <i class="fas fa-phone mr-2"></i>Book Now
+                    <a href="tel:0789377351" class="bg-pink-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-pink-700 transition duration-300 shadow-md">
+                        <i class="fas fa-phone mr-2"></i>
+                        <span class="english">Book Now</span>
+                        <span class="french">Réserver</span>
                     </a>
                     <button class="md:hidden text-gray-600 focus:outline-none" id="mobile-menu-button">
                         <i class="fas fa-bars text-xl"></i>
@@ -65,12 +147,38 @@
         </div>
         
         <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-white py-4 px-4 shadow-lg" id="mobile-menu">
-            <div class="flex flex-col space-y-4">
-                <a href="index.html" class="text-gray-600 hover:text-pink-700 transition duration-300">Home</a>
-                <a href="rooms.html" class="text-pink-700 font-medium">Rooms</a>
-                <a href="gallery.html" class="text-gray-600 hover:text-pink-700 transition duration-300">Gallery</a>
-                <a href="contact.html" class="text-gray-600 hover:text-pink-700 transition duration-300">Contact</a>
+        <div class="md:hidden hidden bg-white py-6 px-4 shadow-lg" id="mobile-menu">
+            <div class="flex flex-col space-y-5">
+                <a href="index.html" class="text-gray-600 hover:text-pink-700 transition duration-300 text-lg pl-4 py-2">
+                    <span class="english">Home</span>
+                    <span class="french">Accueil</span>
+                </a>
+                <a href="rooms.html" class="text-pink-700 font-medium text-lg border-l-4 border-pink-700 pl-4 py-2">
+                    <span class="english">Rooms</span>
+                    <span class="french">Chambres</span>
+                </a>
+                <a href="gallery.html" class="text-gray-600 hover:text-pink-700 transition duration-300 text-lg pl-4 py-2">
+                    <span class="english">Gallery</span>
+                    <span class="french">Galerie</span>
+                </a>
+                <a href="contact.html" class="text-gray-600 hover:text-pink-700 transition duration-300 text-lg pl-4 py-2">
+                    <span class="english">Contact</span>
+                    <span class="french">Contact</span>
+                </a>
+                
+                <!-- Mobile Language Selector -->
+                <div class="pt-4 border-t border-gray-200 mt-4">
+                    <p class="text-gray-500 text-sm font-medium mb-3 pl-4 english">Select Language</p>
+                    <p class="text-gray-500 text-sm font-medium mb-3 pl-4 french">Choisir la Langue</p>
+                    <div class="flex space-x-3 px-4">
+                        <button class="language-option-mobile flex-1 text-center px-4 py-3 rounded-lg border-2 border-pink-600 bg-pink-600 text-white font-medium shadow-sm" data-lang="en">
+                            English
+                        </button>
+                        <button class="language-option-mobile flex-1 text-center px-4 py-3 rounded-lg border-2 border-gray-300 text-gray-600 font-medium hover:border-pink-600 hover:text-pink-600 transition duration-300" data-lang="fr">
+                            Français
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -78,8 +186,10 @@
     <!-- Hero Section -->
     <section class="pt-32 pb-20 bg-pink-700 text-white">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <h1 class="heading-font text-5xl md:text-6xl font-bold mb-6">Our Rooms & Suites</h1>
-            <p class="text-xl max-w-3xl mx-auto">Experience unparalleled comfort in our thoughtfully designed accommodations, each crafted to provide a perfect blend of luxury and relaxation.</p>
+            <h1 class="heading-font text-5xl md:text-6xl font-bold mb-6 english">Our Rooms & Suites</h1>
+            <h1 class="heading-font text-5xl md:text-6xl font-bold mb-6 french">Nos Chambres & Suites</h1>
+            <p class="text-xl max-w-3xl mx-auto english">Experience unparalleled comfort in our thoughtfully designed accommodations, each crafted to provide a perfect blend of luxury and relaxation.</p>
+            <p class="text-xl max-w-3xl mx-auto french">Vivez un confort incomparable dans nos hébergements soigneusement conçus, chacun créé pour offrir un mélange parfait de luxe et de détente.</p>
         </div>
     </section>
 
@@ -87,7 +197,7 @@
     <section class="py-20">
         <div class="max-w-7xl mx-auto px-4">
             <!-- Standard Room -->
-            <div class="bg-white rounded-2xl overflow-hidden shadow-lg mb-20 room-card">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg mb-20 room-card border border-gray-100">
                 <div class="md:flex">
                     <div class="md:w-1/2">
                         <div class="h-96 md:h-full overflow-hidden">
@@ -96,39 +206,48 @@
                     </div>
                     <div class="md:w-1/2 p-8 md:p-12">
                         <div class="flex justify-between items-start mb-4">
-                            <h2 class="heading-font text-3xl font-bold text-gray-800">Standard Room</h2>
-                            <span class="text-pink-700 font-bold text-2xl">$90<span class="text-lg">/night</span></span>
+                            <h2 class="heading-font text-3xl font-bold text-gray-800 english">Standard Room</h2>
+                            <h2 class="heading-font text-3xl font-bold text-gray-800 french">Chambre Standard</h2>
+                            <span class="text-pink-700 font-bold text-2xl">$90<span class="text-lg english">/night</span><span class="text-lg french">/nuit</span></span>
                         </div>
-                        <p class="text-gray-600 mb-6">Our cozy Standard Room offers comfort and functionality for the practical traveler. Featuring a comfortable queen-sized bed and essential amenities.</p>
+                        <p class="text-gray-600 mb-6 english">Our cozy Standard Room offers comfort and functionality for the practical traveler. Featuring a comfortable queen-sized bed and essential amenities.</p>
+                        <p class="text-gray-600 mb-6 french">Notre chambre Standard confortable offre confort et fonctionnalité pour le voyageur pratique. Avec un lit queen-size confortable et des équipements essentiels.</p>
                         
                         <div class="mb-8">
-                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Room Features</h3>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4 english">Room Features</h3>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4 french">Caractéristiques</h3>
                             <div class="grid grid-cols-2 gap-4">
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-bed text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Queen Size Bed</span>
+                                    <span class="text-gray-700 english">Queen Size Bed</span>
+                                    <span class="text-gray-700 french">Lit Queen Size</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-tv text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Flat Screen TV</span>
+                                    <span class="text-gray-700 english">Flat Screen TV</span>
+                                    <span class="text-gray-700 french">TV Écran Plat</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-wifi text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Free Wi-Fi</span>
+                                    <span class="text-gray-700 english">Free Wi-Fi</span>
+                                    <span class="text-gray-700 french">Wi-Fi Gratuit</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-snowflake text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Air Conditioning</span>
+                                    <span class="text-gray-700 english">Air Conditioning</span>
+                                    <span class="text-gray-700 french">Air Conditionné</span>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="flex space-x-4">
                             <a href="tel:0789377351" class="bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition duration-300 flex-1 text-center">
-                                Book Now
+                                <span class="english">Book Now</span>
+                                <span class="french">Réserver</span>
                             </a>
                             <button class="border border-pink-600 text-pink-600 px-6 py-3 rounded-lg hover:bg-pink-50 transition duration-300 flex-1" onclick="openModal('standard')">
-                                View Details
+                                <span class="english">View Details</span>
+                                <span class="french">Voir Détails</span>
                             </button>
                         </div>
                     </div>
@@ -136,7 +255,7 @@
             </div>
             
             <!-- Deluxe Room -->
-            <div class="bg-white rounded-2xl overflow-hidden shadow-lg mb-20 room-card">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg mb-20 room-card border border-gray-100">
                 <div class="md:flex md:flex-row-reverse">
                     <div class="md:w-1/2">
                         <div class="h-96 md:h-full overflow-hidden">
@@ -145,47 +264,58 @@
                     </div>
                     <div class="md:w-1/2 p-8 md:p-12">
                         <div class="flex justify-between items-start mb-4">
-                            <h2 class="heading-font text-3xl font-bold text-gray-800">Deluxe Room</h2>
-                            <span class="text-pink-700 font-bold text-2xl">$120<span class="text-lg">/night</span></span>
+                            <h2 class="heading-font text-3xl font-bold text-gray-800 english">Deluxe Room</h2>
+                            <h2 class="heading-font text-3xl font-bold text-gray-800 french">Chambre Deluxe</h2>
+                            <span class="text-pink-700 font-bold text-2xl">$120<span class="text-lg english">/night</span><span class="text-lg french">/nuit</span></span>
                         </div>
-                        <p class="text-gray-600 mb-6">Spacious room with comfortable king-sized bed, elegant decor, and beautiful views of the surrounding area. Perfect for couples or solo travelers seeking extra comfort.</p>
+                        <p class="text-gray-600 mb-6 english">Spacious room with comfortable king-sized bed, elegant decor, and beautiful views of the surrounding area. Perfect for couples or solo travelers seeking extra comfort.</p>
+                        <p class="text-gray-600 mb-6 french">Chambre spacieuse avec lit king-size confortable, décoration élégante et belles vues sur les environs. Parfaite pour les couples ou voyageurs solo recherchant un confort supplémentaire.</p>
                         
                         <div class="mb-8">
-                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Room Features</h3>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4 english">Room Features</h3>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4 french">Caractéristiques</h3>
                             <div class="grid grid-cols-2 gap-4">
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-bed text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">King Size Bed</span>
+                                    <span class="text-gray-700 english">King Size Bed</span>
+                                    <span class="text-gray-700 french">Lit King Size</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-tv text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Smart TV</span>
+                                    <span class="text-gray-700 english">Smart TV</span>
+                                    <span class="text-gray-700 french">TV Intelligente</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-wifi text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Free Wi-Fi</span>
+                                    <span class="text-gray-700 english">Free Wi-Fi</span>
+                                    <span class="text-gray-700 french">Wi-Fi Gratuit</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-bath text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Private Bathroom</span>
+                                    <span class="text-gray-700 english">Private Bathroom</span>
+                                    <span class="text-gray-700 french">Salle de Bain Privée</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-chair text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Sitting Area</span>
+                                    <span class="text-gray-700 english">Sitting Area</span>
+                                    <span class="text-gray-700 french">Coin Salon</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-snowflake text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Air Conditioning</span>
+                                    <span class="text-gray-700 english">Air Conditioning</span>
+                                    <span class="text-gray-700 french">Air Conditionné</span>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="flex space-x-4">
                             <a href="tel:0789377351" class="bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition duration-300 flex-1 text-center">
-                                Book Now
+                                <span class="english">Book Now</span>
+                                <span class="french">Réserver</span>
                             </a>
                             <button class="border border-pink-600 text-pink-600 px-6 py-3 rounded-lg hover:bg-pink-50 transition duration-300 flex-1" onclick="openModal('deluxe')">
-                                View Details
+                                <span class="english">View Details</span>
+                                <span class="french">Voir Détails</span>
                             </button>
                         </div>
                     </div>
@@ -193,7 +323,7 @@
             </div>
             
             <!-- Family Room -->
-            <div class="bg-white rounded-2xl overflow-hidden shadow-lg mb-20 room-card">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg mb-20 room-card border border-gray-100">
                 <div class="md:flex">
                     <div class="md:w-1/2">
                         <div class="h-96 md:h-full overflow-hidden">
@@ -202,47 +332,58 @@
                     </div>
                     <div class="md:w-1/2 p-8 md:p-12">
                         <div class="flex justify-between items-start mb-4">
-                            <h2 class="heading-font text-3xl font-bold text-gray-800">Family Room</h2>
-                            <span class="text-pink-700 font-bold text-2xl">$150<span class="text-lg">/night</span></span>
+                            <h2 class="heading-font text-3xl font-bold text-gray-800 english">Family Room</h2>
+                            <h2 class="heading-font text-3xl font-bold text-gray-800 french">Chambre Familiale</h2>
+                            <span class="text-pink-700 font-bold text-2xl">$150<span class="text-lg english">/night</span><span class="text-lg french">/nuit</span></span>
                         </div>
-                        <p class="text-gray-600 mb-6">Perfect for families, featuring multiple beds, extra space, and child-friendly amenities. Our Family Room ensures comfort for everyone.</p>
+                        <p class="text-gray-600 mb-6 english">Perfect for families, featuring multiple beds, extra space, and child-friendly amenities. Our Family Room ensures comfort for everyone.</p>
+                        <p class="text-gray-600 mb-6 french">Parfaite pour les familles, avec plusieurs lits, un espace supplémentaire et des équipements adaptés aux enfants. Notre Chambre Familiale assure le confort de tous.</p>
                         
                         <div class="mb-8">
-                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Room Features</h3>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4 english">Room Features</h3>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4 french">Caractéristiques</h3>
                             <div class="grid grid-cols-2 gap-4">
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-bed text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Double & Single Beds</span>
+                                    <span class="text-gray-700 english">Double & Single Beds</span>
+                                    <span class="text-gray-700 french">Lits Double et Simple</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-tv text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Smart TV</span>
+                                    <span class="text-gray-700 english">Smart TV</span>
+                                    <span class="text-gray-700 french">TV Intelligente</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-wifi text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Free Wi-Fi</span>
+                                    <span class="text-gray-700 english">Free Wi-Fi</span>
+                                    <span class="text-gray-700 french">Wi-Fi Gratuit</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-bath text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Private Bathroom</span>
+                                    <span class="text-gray-700 english">Private Bathroom</span>
+                                    <span class="text-gray-700 french">Salle de Bain Privée</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-couch text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Spacious Living Area</span>
+                                    <span class="text-gray-700 english">Spacious Living Area</span>
+                                    <span class="text-gray-700 french">Espace de Vie Spacieux</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-snowflake text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Air Conditioning</span>
+                                    <span class="text-gray-700 english">Air Conditioning</span>
+                                    <span class="text-gray-700 french">Air Conditionné</span>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="flex space-x-4">
                             <a href="tel:0789377351" class="bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition duration-300 flex-1 text-center">
-                                Book Now
+                                <span class="english">Book Now</span>
+                                <span class="french">Réserver</span>
                             </a>
                             <button class="border border-pink-600 text-pink-600 px-6 py-3 rounded-lg hover:bg-pink-50 transition duration-300 flex-1" onclick="openModal('family')">
-                                View Details
+                                <span class="english">View Details</span>
+                                <span class="french">Voir Détails</span>
                             </button>
                         </div>
                     </div>
@@ -250,7 +391,7 @@
             </div>
             
             <!-- Executive Suite -->
-            <div class="bg-white rounded-2xl overflow-hidden shadow-lg room-card">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg room-card border border-gray-100">
                 <div class="md:flex md:flex-row-reverse">
                     <div class="md:w-1/2">
                         <div class="h-96 md:h-full overflow-hidden">
@@ -259,55 +400,68 @@
                     </div>
                     <div class="md:w-1/2 p-8 md:p-12">
                         <div class="flex justify-between items-start mb-4">
-                            <h2 class="heading-font text-3xl font-bold text-gray-800">Executive Suite</h2>
-                            <span class="text-pink-700 font-bold text-2xl">$180<span class="text-lg">/night</span></span>
+                            <h2 class="heading-font text-3xl font-bold text-gray-800 english">Executive Suite</h2>
+                            <h2 class="heading-font text-3xl font-bold text-gray-800 french">Suite Exécutive</h2>
+                            <span class="text-pink-700 font-bold text-2xl">$180<span class="text-lg english">/night</span><span class="text-lg french">/nuit</span></span>
                         </div>
-                        <p class="text-gray-600 mb-6">Luxurious suite with separate living area, premium amenities, and exclusive access to our lounge facilities. The ultimate in comfort and style.</p>
+                        <p class="text-gray-600 mb-6 english">Luxurious suite with separate living area, premium amenities, and exclusive access to our lounge facilities. The ultimate in comfort and style.</p>
+                        <p class="text-gray-600 mb-6 french">Suite luxueuse avec salon séparé, équipements premium et accès exclusif à nos installations de salon. Le summum du confort et du style.</p>
                         
                         <div class="mb-8">
-                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Room Features</h3>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4 english">Room Features</h3>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4 french">Caractéristiques</h3>
                             <div class="grid grid-cols-2 gap-4">
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-bed text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">King Size Bed</span>
+                                    <span class="text-gray-700 english">King Size Bed</span>
+                                    <span class="text-gray-700 french">Lit King Size</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-tv text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Smart TV</span>
+                                    <span class="text-gray-700 english">Smart TV</span>
+                                    <span class="text-gray-700 french">TV Intelligente</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-wifi text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Free Wi-Fi</span>
+                                    <span class="text-gray-700 english">Free Wi-Fi</span>
+                                    <span class="text-gray-700 french">Wi-Fi Gratuit</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-bath text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Luxury Bathroom</span>
+                                    <span class="text-gray-700 english">Luxury Bathroom</span>
+                                    <span class="text-gray-700 french">Salle de Bain de Luxe</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-couch text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Separate Living Room</span>
+                                    <span class="text-gray-700 english">Separate Living Room</span>
+                                    <span class="text-gray-700 french">Salon Séparé</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-wine-glass-alt text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Mini Bar</span>
+                                    <span class="text-gray-700 english">Mini Bar</span>
+                                    <span class="text-gray-700 french">Mini Bar</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-snowflake text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Air Conditioning</span>
+                                    <span class="text-gray-700 english">Air Conditioning</span>
+                                    <span class="text-gray-700 french">Air Conditionné</span>
                                 </div>
                                 <div class="flex items-center room-feature p-2 rounded-lg">
                                     <i class="fas fa-concierge-bell text-pink-600 mr-3"></i>
-                                    <span class="text-gray-700">Butler Service</span>
+                                    <span class="text-gray-700 english">Butler Service</span>
+                                    <span class="text-gray-700 french">Service Majordome</span>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="flex space-x-4">
                             <a href="tel:0789377351" class="bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition duration-300 flex-1 text-center">
-                                Book Now
+                                <span class="english">Book Now</span>
+                                <span class="french">Réserver</span>
                             </a>
                             <button class="border border-pink-600 text-pink-600 px-6 py-3 rounded-lg hover:bg-pink-50 transition duration-300 flex-1" onclick="openModal('executive')">
-                                View Details
+                                <span class="english">View Details</span>
+                                <span class="french">Voir Détails</span>
                             </button>
                         </div>
                     </div>
@@ -320,8 +474,10 @@
     <section class="py-20 bg-gray-100">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="heading-font text-4xl font-bold text-gray-800 mb-4">Hotel Amenities</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">We provide a range of premium amenities to ensure your stay is comfortable and memorable.</p>
+                <h2 class="heading-font text-4xl font-bold text-gray-800 mb-4 english">Hotel Amenities</h2>
+                <h2 class="heading-font text-4xl font-bold text-gray-800 mb-4 french">Équipements de l'Hôtel</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto english">We provide a range of premium amenities to ensure your stay is comfortable and memorable.</p>
+                <p class="text-gray-600 max-w-2xl mx-auto french">Nous proposons une gamme d'équipements premium pour garantir que votre séjour soit confortable et mémorable.</p>
             </div>
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -329,64 +485,80 @@
                     <div class="bg-pink-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 amenity-icon">
                         <i class="fas fa-swimming-pool text-pink-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Swimming Pool</h3>
-                    <p class="text-gray-600 text-sm">Relax by our beautiful outdoor pool</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 english">Swimming Pool</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 french">Piscine</h3>
+                    <p class="text-gray-600 text-sm english">Relax by our beautiful outdoor pool</p>
+                    <p class="text-gray-600 text-sm french">Détendez-vous près de notre belle piscine extérieure</p>
                 </div>
                 
                 <div class="text-center">
                     <div class="bg-pink-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 amenity-icon">
                         <i class="fas fa-utensils text-pink-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Restaurant & Bar</h3>
-                    <p class="text-gray-600 text-sm">Enjoy delicious meals and drinks</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 english">Restaurant & Bar</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 french">Restaurant & Bar</h3>
+                    <p class="text-gray-600 text-sm english">Enjoy delicious meals and drinks</p>
+                    <p class="text-gray-600 text-sm french">Profitez de repas délicieux et de boissons</p>
                 </div>
                 
                 <div class="text-center">
                     <div class="bg-pink-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 amenity-icon">
                         <i class="fas fa-wifi text-pink-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Free Wi-Fi</h3>
-                    <p class="text-gray-600 text-sm">Stay connected with high-speed internet</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 english">Free Wi-Fi</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 french">Wi-Fi Gratuit</h3>
+                    <p class="text-gray-600 text-sm english">Stay connected with high-speed internet</p>
+                    <p class="text-gray-600 text-sm french">Restez connecté avec internet haut débit</p>
                 </div>
                 
                 <div class="text-center">
                     <div class="bg-pink-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 amenity-icon">
                         <i class="fas fa-car text-pink-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Free Parking</h3>
-                    <p class="text-gray-600 text-sm">Secure parking for all guests</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 english">Free Parking</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 french">Parking Gratuit</h3>
+                    <p class="text-gray-600 text-sm english">Secure parking for all guests</p>
+                    <p class="text-gray-600 text-sm french">Parking sécurisé pour tous les invités</p>
                 </div>
                 
                 <div class="text-center">
                     <div class="bg-pink-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 amenity-icon">
                         <i class="fas fa-concierge-bell text-pink-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">24/7 Reception</h3>
-                    <p class="text-gray-600 text-sm">Round-the-clock assistance</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 english">24/7 Reception</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 french">Réception 24h/24</h3>
+                    <p class="text-gray-600 text-sm english">Round-the-clock assistance</p>
+                    <p class="text-gray-600 text-sm french">Assistance 24 heures sur 24</p>
                 </div>
                 
                 <div class="text-center">
                     <div class="bg-pink-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 amenity-icon">
                         <i class="fas fa-dumbbell text-pink-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Fitness Center</h3>
-                    <p class="text-gray-600 text-sm">Stay fit during your stay</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 english">Fitness Center</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 french">Centre de Fitness</h3>
+                    <p class="text-gray-600 text-sm english">Stay fit during your stay</p>
+                    <p class="text-gray-600 text-sm french">Restez en forme pendant votre séjour</p>
                 </div>
                 
                 <div class="text-center">
                     <div class="bg-pink-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 amenity-icon">
                         <i class="fas fa-spa text-pink-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Spa Services</h3>
-                    <p class="text-gray-600 text-sm">Relaxing treatments available</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 english">Spa Services</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 french">Services Spa</h3>
+                    <p class="text-gray-600 text-sm english">Relaxing treatments available</p>
+                    <p class="text-gray-600 text-sm french">Traitements relaxants disponibles</p>
                 </div>
                 
                 <div class="text-center">
                     <div class="bg-pink-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 amenity-icon">
                         <i class="fas fa-shuttle-van text-pink-600 text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Airport Transfer</h3>
-                    <p class="text-gray-600 text-sm">Complimentary shuttle service</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 english">Airport Transfer</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2 french">Transfert Aéroport</h3>
+                    <p class="text-gray-600 text-sm english">Complimentary shuttle service</p>
+                    <p class="text-gray-600 text-sm french">Service de navette gratuit</p>
                 </div>
             </div>
         </div>
@@ -395,15 +567,20 @@
     <!-- CTA Section -->
     <section class="py-20 bg-pink-700 text-white">
         <div class="max-w-5xl mx-auto text-center px-4">
-            <h2 class="heading-font text-4xl font-bold mb-6">Ready to Book Your Stay?</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Contact us now to reserve your preferred room and experience the comfort of La Rose Lounge.</p>
+            <h2 class="heading-font text-4xl font-bold mb-6 english">Ready to Book Your Stay?</h2>
+            <h2 class="heading-font text-4xl font-bold mb-6 french">Prêt à Réserver Votre Séjour?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto english">Contact us now to reserve your preferred room and experience the comfort of La Rose Lounge.</p>
+            <p class="text-xl mb-8 max-w-2xl mx-auto french">Contactez-nous dès maintenant pour réserver votre chambre préférée et découvrir le confort de La Rose Lounge.</p>
             
             <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
                 <a href="tel:0789377351" class="bg-white text-pink-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
-                    <i class="fas fa-phone mr-2"></i>Call to Book
+                    <i class="fas fa-phone mr-2"></i>
+                    <span class="english">Call to Book</span>
+                    <span class="french">Appeler pour Réserver</span>
                 </a>
                 <a href="contact.html" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-pink-700 transition duration-300">
-                    Send Inquiry
+                    <span class="english">Send Inquiry</span>
+                    <span class="french">Envoyer une Demande</span>
                 </a>
             </div>
         </div>
@@ -418,7 +595,8 @@
                         <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762876060/La_Rose_Lounge_Logo_pink_qznuts.png" alt="La Rose Lounge Logo" class="h-8 w-auto">
                         <span class="heading-font text-xl font-bold">La Rose Lounge</span>
                     </div>
-                    <p class="text-gray-400 mb-4">Luxury accommodation in the heart of Gisenyi, Rwanda.</p>
+                    <p class="text-gray-400 mb-4 english">Luxury accommodation in the heart of Gisenyi, Rwanda.</p>
+                    <p class="text-gray-400 mb-4 french">Hébergement de luxe au cœur de Gisenyi, Rwanda.</p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-white transition duration-300">
                             <i class="fab fa-facebook-f"></i>
@@ -433,17 +611,19 @@
                 </div>
                 
                 <div>
-                    <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+                    <h3 class="text-lg font-semibold mb-6 english">Quick Links</h3>
+                    <h3 class="text-lg font-semibold mb-6 french">Liens Rapides</h3>
                     <ul class="space-y-3">
-                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
-                        <li><a href="rooms.html" class="text-gray-400 hover:text-white transition duration-300">Rooms & Suites</a></li>
-                        <li><a href="gallery.html" class="text-gray-400 hover:text-white transition duration-300">Gallery</a></li>
-                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition duration-300">Contact Us</a></li>
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-300 english">Home</a><a href="index.html" class="text-gray-400 hover:text-white transition duration-300 french">Accueil</a></li>
+                        <li><a href="rooms.html" class="text-gray-400 hover:text-white transition duration-300 english">Rooms & Suites</a><a href="rooms.html" class="text-gray-400 hover:text-white transition duration-300 french">Chambres & Suites</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white transition duration-300 english">Gallery</a><a href="gallery.html" class="text-gray-400 hover:text-white transition duration-300 french">Galerie</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition duration-300 english">Contact Us</a><a href="contact.html" class="text-gray-400 hover:text-white transition duration-300 french">Nous Contacter</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h3 class="text-lg font-semibold mb-6">Contact Info</h3>
+                    <h3 class="text-lg font-semibold mb-6 english">Contact Info</h3>
+                    <h3 class="text-lg font-semibold mb-6 french">Coordonnées</h3>
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt mt-1 mr-3 text-pink-500"></i>
@@ -461,10 +641,13 @@
                 </div>
                 
                 <div>
-                    <h3 class="text-lg font-semibold mb-6">Newsletter</h3>
-                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for special offers and updates.</p>
+                    <h3 class="text-lg font-semibold mb-6 english">Newsletter</h3>
+                    <h3 class="text-lg font-semibold mb-6 french">Bulletin</h3>
+                    <p class="text-gray-400 mb-4 english">Subscribe to our newsletter for special offers and updates.</p>
+                    <p class="text-gray-400 mb-4 french">Abonnez-vous à notre bulletin pour des offres spéciales et des mises à jour.</p>
                     <form class="flex">
-                        <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-800">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-800 english">
+                        <input type="email" placeholder="Votre email" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-800 french">
                         <button type="submit" class="bg-pink-600 px-4 py-2 rounded-r-lg hover:bg-pink-700 transition duration-300">
                             <i class="fas fa-paper-plane"></i>
                         </button>
@@ -473,17 +656,32 @@
             </div>
             
             <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 La Rose Lounge. All rights reserved.</p>
+                <p class="english">&copy; 2025 La Rose Lounge. All rights reserved.</p>
+                <p class="french">&copy; 2025 La Rose Lounge. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/250789377351?text=Hello%20La%20Rose%20Lounge,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20rooms%20and%20services" 
+       target="_blank" 
+       class="fixed bottom-6 right-6 z-50 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition duration-300 whatsapp-float group">
+        <i class="fab fa-whatsapp text-2xl"></i>
+        <span class="absolute right-16 bg-gray-800 text-white px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap english">
+            Chat about rooms
+        </span>
+        <span class="absolute right-16 bg-gray-800 text-white px-3 py-2 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap french">
+            Discuter des chambres
+        </span>
+    </a>
 
     <!-- Room Detail Modals -->
     <div id="modal-standard" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div class="p-6">
                 <div class="flex justify-between items-center mb-6">
-                    <h3 class="heading-font text-2xl font-bold text-gray-800">Standard Room Details</h3>
+                    <h3 class="heading-font text-2xl font-bold text-gray-800 english">Standard Room Details</h3>
+                    <h3 class="heading-font text-2xl font-bold text-gray-800 french">Détails Chambre Standard</h3>
                     <button onclick="closeModal('standard')" class="text-gray-500 hover:text-gray-700">
                         <i class="fas fa-times text-xl"></i>
                     </button>
@@ -494,56 +692,157 @@
                 </div>
                 
                 <div class="mb-6">
-                    <h4 class="text-lg font-semibold text-gray-800 mb-3">Room Description</h4>
-                    <p class="text-gray-600 mb-4">Our cozy Standard Room offers comfort and functionality for the practical traveler. Featuring a comfortable queen-sized bed and essential amenities, this room provides everything you need for a restful stay.</p>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-3 english">Room Description</h4>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-3 french">Description de la Chambre</h4>
+                    <p class="text-gray-600 mb-4 english">Our cozy Standard Room offers comfort and functionality for the practical traveler. Featuring a comfortable queen-sized bed and essential amenities, this room provides everything you need for a restful stay.</p>
+                    <p class="text-gray-600 mb-4 french">Notre chambre Standard confortable offre confort et fonctionnalité pour le voyageur pratique. Avec un lit queen-size confortable et des équipements essentiels, cette chambre fournit tout ce dont vous avez besoin pour un séjour reposant.</p>
                     
-                    <h4 class="text-lg font-semibold text-gray-800 mb-3">Amenities Included</h4>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-3 english">Amenities Included</h4>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-3 french">Équipements Inclus</h4>
                     <ul class="grid grid-cols-2 gap-2 text-gray-600">
                         <li class="flex items-center">
                             <i class="fas fa-check text-pink-600 mr-2"></i>
-                            Queen Size Bed
+                            <span class="english">Queen Size Bed</span>
+                            <span class="french">Lit Queen Size</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-pink-600 mr-2"></i>
-                            Flat Screen TV
+                            <span class="english">Flat Screen TV</span>
+                            <span class="french">TV Écran Plat</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-pink-600 mr-2"></i>
-                            Free Wi-Fi
+                            <span class="english">Free Wi-Fi</span>
+                            <span class="french">Wi-Fi Gratuit</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-pink-600 mr-2"></i>
-                            Air Conditioning
+                            <span class="english">Air Conditioning</span>
+                            <span class="french">Air Conditionné</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-pink-600 mr-2"></i>
-                            Private Bathroom
+                            <span class="english">Private Bathroom</span>
+                            <span class="french">Salle de Bain Privée</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-pink-600 mr-2"></i>
-                            Daily Housekeeping
+                            <span class="english">Daily Housekeeping</span>
+                            <span class="french">Ménage Quotidien</span>
                         </li>
                     </ul>
                 </div>
                 
                 <div class="flex justify-between items-center">
-                    <span class="text-pink-700 font-bold text-2xl">$90<span class="text-lg">/night</span></span>
+                    <span class="text-pink-700 font-bold text-2xl">$90<span class="text-lg english">/night</span><span class="text-lg french">/nuit</span></span>
                     <a href="tel:0789377351" class="bg-pink-600 text-white px-6 py-3 rounded-lg hover:bg-pink-700 transition duration-300">
-                        Book Now
+                        <span class="english">Book Now</span>
+                        <span class="french">Réserver</span>
                     </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Similar modals for deluxe, family, and executive rooms would be here -->
-    <!-- For brevity, I've only included one modal example -->
+    <!-- Similar modals for other rooms would be implemented similarly -->
 
     <script>
         // Mobile menu toggle
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');
+        });
+
+        // Language dropdown functionality
+        const languageToggle = document.getElementById('language-toggle');
+        const languageDropdown = document.getElementById('language-dropdown');
+        const languageChevron = document.getElementById('language-chevron');
+        
+        languageToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            languageDropdown.classList.toggle('open');
+            languageChevron.classList.toggle('rotate-180');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function() {
+            languageDropdown.classList.remove('open');
+            languageChevron.classList.remove('rotate-180');
+        });
+
+        // Language switching functionality
+        const languageButtons = document.querySelectorAll('.language-option, .language-option-mobile');
+        const currentLanguageElement = document.getElementById('current-language');
+        const checkEn = document.getElementById('check-en');
+        const checkFr = document.getElementById('check-fr');
+        
+        // Set initial language to English
+        let currentLanguage = 'en';
+        
+        function switchLanguage(lang) {
+            if (lang !== currentLanguage) {
+                currentLanguage = lang;
+                
+                if (lang === 'en') {
+                    currentLanguageElement.textContent = 'EN';
+                    checkEn.classList.remove('hidden');
+                    checkFr.classList.add('hidden');
+                    
+                    // Update mobile buttons
+                    document.querySelectorAll('.language-option-mobile').forEach(btn => {
+                        if (btn.getAttribute('data-lang') === 'en') {
+                            btn.classList.add('border-pink-600', 'bg-pink-600', 'text-white');
+                            btn.classList.remove('border-gray-300', 'text-gray-600', 'hover:border-pink-600', 'hover:text-pink-600');
+                        } else {
+                            btn.classList.remove('border-pink-600', 'bg-pink-600', 'text-white');
+                            btn.classList.add('border-gray-300', 'text-gray-600', 'hover:border-pink-600', 'hover:text-pink-600');
+                        }
+                    });
+                    
+                    // Show English content, hide French
+                    document.querySelectorAll('.english').forEach(el => {
+                        el.style.display = 'block';
+                    });
+                    document.querySelectorAll('.french').forEach(el => {
+                        el.style.display = 'none';
+                    });
+                } else {
+                    currentLanguageElement.textContent = 'FR';
+                    checkEn.classList.add('hidden');
+                    checkFr.classList.remove('hidden');
+                    
+                    // Update mobile buttons
+                    document.querySelectorAll('.language-option-mobile').forEach(btn => {
+                        if (btn.getAttribute('data-lang') === 'fr') {
+                            btn.classList.add('border-pink-600', 'bg-pink-600', 'text-white');
+                            btn.classList.remove('border-gray-300', 'text-gray-600', 'hover:border-pink-600', 'hover:text-pink-600');
+                        } else {
+                            btn.classList.remove('border-pink-600', 'bg-pink-600', 'text-white');
+                            btn.classList.add('border-gray-300', 'text-gray-600', 'hover:border-pink-600', 'hover:text-pink-600');
+                        }
+                    });
+                    
+                    // Show French content, hide English
+                    document.querySelectorAll('.english').forEach(el => {
+                        el.style.display = 'none';
+                    });
+                    document.querySelectorAll('.french').forEach(el => {
+                        el.style.display = 'block';
+                    });
+                }
+                
+                // Close dropdown and mobile menu
+                languageDropdown.classList.remove('open');
+                languageChevron.classList.remove('rotate-180');
+                document.getElementById('mobile-menu').classList.add('hidden');
+            }
+        }
+        
+        languageButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const selectedLanguage = button.getAttribute('data-lang');
+                switchLanguage(selectedLanguage);
+            });
         });
 
         // Modal functions
@@ -569,6 +868,14 @@
                 document.body.style.overflow = 'auto';
             }
         });
+
+        // Add rotation class to Tailwind
+        if (!document.head.querySelector('#tailwind-rotate')) {
+            const style = document.createElement('style');
+            style.id = 'tailwind-rotate';
+            style.textContent = '.rotate-180 { transform: rotate(180deg); }';
+            document.head.appendChild(style);
+        }
     </script>
 </body>
 </html>
