@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Rose Lounge | Luxury Motel in Gisenyi, Rwanda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.7) 0%, rgba(165, 42, 42, 0.7) 100%);
+        }
+        .room-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="heading-font text-2xl font-bold text-rose-800">La Rose Lounge</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-700 hover:text-rose-700 font-medium">Home</a>
+                <a href="#rooms" class="text-gray-700 hover:text-rose-700 font-medium">Rooms</a>
+                <a href="#gallery" class="text-gray-700 hover:text-rose-700 font-medium">Gallery</a>
+                <a href="#amenities" class="text-gray-700 hover:text-rose-700 font-medium">Amenities</a>
+                <a href="#contact" class="text-gray-700 hover:text-rose-700 font-medium">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="tel:0789377351" class="bg-rose-700 text-white px-4 py-2 rounded-lg hover:bg-rose-800 transition">
+                    <i class="fas fa-phone mr-2"></i>Call Now
+                </a>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-4 shadow-lg">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-gray-700 hover:text-rose-700 font-medium">Home</a>
+                <a href="#rooms" class="text-gray-700 hover:text-rose-700 font-medium">Rooms</a>
+                <a href="#gallery" class="text-gray-700 hover:text-rose-700 font-medium">Gallery</a>
+                <a href="#amenities" class="text-gray-700 hover:text-rose-700 font-medium">Amenities</a>
+                <a href="#contact" class="text-gray-700 hover:text-rose-700 font-medium">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-20 pb-16 md:pt-32 md:pb-24 bg-cover bg-center relative" style="background-image: url('https://res.cloudinary.com/daha4jihh/image/upload/v1762840496/2_bkmlld.jpg');">
+        <div class="hero-gradient absolute inset-0"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-2xl">
+                <h1 class="heading-font text-4xl md:text-6xl font-bold text-white mb-4">Experience Luxury in Gisenyi</h1>
+                <p class="text-xl text-white mb-8">La Rose Lounge offers premium accommodation with stunning views, exceptional service, and modern amenities in the heart of Rwanda's North Province.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#rooms" class="bg-white text-rose-700 px-6 py-3 rounded-lg font-medium text-center hover:bg-gray-100 transition">View Rooms</a>
+                    <a href="#contact" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-medium text-center hover:bg-white hover:text-rose-700 transition">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-6">Welcome to La Rose Lounge</h2>
+                    <p class="text-gray-600 mb-4">Nestled in the beautiful city of Gisenyi, La Rose Lounge offers a perfect blend of comfort, luxury, and Rwandan hospitality. Our motel provides a serene escape with modern amenities and personalized service.</p>
+                    <p class="text-gray-600 mb-6">Whether you're visiting for business or leisure, our well-appointed rooms and convenient location make us the ideal choice for your stay in Rwanda's North Province.</p>
+                    <div class="flex space-x-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-wifi text-rose-700 mr-2"></i>
+                            <span class="text-gray-700">Free WiFi</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-parking text-rose-700 mr-2"></i>
+                            <span class="text-gray-700">Parking</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-utensils text-rose-700 mr-2"></i>
+                            <span class="text-gray-700">Restaurant</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762840496/4_ihlwf7.jpg" alt="La Rose Lounge Room" class="rounded-lg shadow-md">
+                        <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762840496/14_qmmxx7.jpg" alt="La Rose Lounge Interior" class="rounded-lg shadow-md mt-8">
+                        <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762840502/6_qahakd.jpg" alt="La Rose Lounge View" class="rounded-lg shadow-md">
+                        <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762840506/5_cvpckt.jpg" alt="La Rose Lounge Amenity" class="rounded-lg shadow-md mt-8">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Rooms</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Each room at La Rose Lounge is thoughtfully designed to provide maximum comfort and relaxation during your stay.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Room 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden room-card">
+                    <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762840491/3_keogql.jpg" alt="Standard Room" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-2">Standard Room</h3>
+                        <p class="text-gray-600 mb-4">Comfortable and cozy room with all essential amenities for a pleasant stay.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-rose-700 font-bold">From $75/night</span>
+                            <a href="#contact" class="bg-rose-700 text-white px-4 py-2 rounded-lg text-sm hover:bg-rose-800 transition">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Room 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden room-card">
+                    <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762840476/8_ob9p3i.jpg" alt="Deluxe Room" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-2">Deluxe Room</h3>
+                        <p class="text-gray-600 mb-4">Spacious room with premium amenities and beautiful views of the surroundings.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-rose-700 font-bold">From $110/night</span>
+                            <a href="#contact" class="bg-rose-700 text-white px-4 py-2 rounded-lg text-sm hover:bg-rose-800 transition">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Room 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden room-card">
+                    <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762840480/15_kpfzos.jpg" alt="Suite" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="heading-font text-xl font-bold text-gray-800 mb-2">Executive Suite</h3>
+                        <p class="text-gray-600 mb-4">Luxurious suite with separate living area and premium amenities for ultimate comfort.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-rose-700 font-bold">From $150/night</span>
+                            <a href="#contact" class="bg-rose-700 text-white px-4 py-2 rounded-lg text-sm hover:bg-rose-800 transition">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">Gallery</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Take a visual tour of our beautiful property and comfortable accommodations.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="gallery-item">
+                    <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762840496/2_bkmlld.jpg" alt="La Rose Lounge" class="w-full h-48 object-cover rounded-lg shadow-md">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762840492/7_y1wkup.jpg" alt="La Rose Lounge" class="w-full h-48 object-cover rounded-lg shadow-md">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762840474/9_b9oh9k.jpg" alt="La Rose Lounge" class="w-full h-48 object-cover rounded-lg shadow-md">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762840471/11_qlhrto.jpg" alt="La Rose Lounge" class="w-full h-48 object-cover rounded-lg shadow-md">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762840470/12_h6wiob.jpg" alt="La Rose Lounge" class="w-full h-48 object-cover rounded-lg shadow-md">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762840469/10_bfilvt.jpg" alt="La Rose Lounge" class="w-full h-48 object-cover rounded-lg shadow-md">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762840466/13_lmh99n.jpg" alt="La Rose Lounge" class="w-full h-48 object-cover rounded-lg shadow-md">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://res.cloudinary.com/daha4jihh/image/upload/v1762840496/4_ihlwf7.jpg" alt="La Rose Lounge" class="w-full h-48 object-cover rounded-lg shadow-md">
+                </div>
+            </div>
+            
+            <!-- Video Section -->
+            <div class="mt-12 text-center">
+                <h3 class="heading-font text-2xl font-bold text-gray-800 mb-6">Take a Virtual Tour</h3>
+                <div class="max-w-4xl mx-auto bg-black rounded-xl overflow-hidden shadow-xl">
+                    <video class="w-full" controls poster="https://res.cloudinary.com/daha4jihh/image/upload/v1762840496/2_bkmlld.jpg">
+                        <source src="https://res.cloudinary.com/daha4jihh/video/upload/v1762841186/La_Rose_Video_Pub_1_ut9pdy.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Amenities</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We provide a range of amenities to ensure your stay is comfortable and memorable.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i class="fas fa-wifi text-2xl text-rose-700"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Free WiFi</h3>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i class="fas fa-parking text-2xl text-rose-700"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Free Parking</h3>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i class="fas fa-utensils text-2xl text-rose-700"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Restaurant</h3>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i class="fas fa-tv text-2xl text-rose-700"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">TV & Entertainment</h3>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i class="fas fa-concierge-bell text-2xl text-rose-700"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Room Service</h3>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i class="fas fa-swimming-pool text-2xl text-rose-700"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Swimming Pool</h3>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i class="fas fa-snowflake text-2xl text-rose-700"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">Air Conditioning</h3>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i class="fas fa-shield-alt text-2xl text-rose-700"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800">24/7 Security</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Booking Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">Contact & Reservation</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Get in touch with us to book your stay or inquire about our services.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-10">
+                <div class="md:w-1/2">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-md">
+                        <h3 class="heading-font text-2xl font-bold text-gray-800 mb-6">Send us a Message</h3>
+                        <form id="contact-form" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-gray-700 mb-2">Full Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500" required>
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-700 mb-2">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500" required></textarea>
+                            </div>
+                            <button type="submit" class="bg-rose-700 text-white px-6 py-3 rounded-lg font-medium w-full hover:bg-rose-800 transition">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-rose-50 p-8 rounded-xl shadow-md h-full">
+                        <h3 class="heading-font text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-rose-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-rose-700"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Address</h4>
+                                    <p class="text-gray-600">Gisenyi, North Province, Rwanda</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-rose-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-rose-700"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Phone</h4>
+                                    <a href="tel:0789377351" class="text-gray-600 hover:text-rose-700">0789377351</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-rose-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-rose-700"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Email</h4>
+                                    <a href="mailto:connect@laroselounge.com" class="text-gray-600 hover:text-rose-700">connect@laroselounge.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-rose-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-globe text-rose-700"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Website</h4>
+                                    <a href="https://laroselounge.com" class="text-gray-600 hover:text-rose-700">laroselounge.com</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 pt-6 border-t border-rose-200">
+                            <h4 class="font-semibold text-gray-800 mb-4">Direct Booking</h4>
+                            <p class="text-gray-600 mb-4">For immediate reservations, call us directly at:</p>
+                            <a href="tel:0789377351" class="bg-rose-700 text-white px-6 py-3 rounded-lg font-medium inline-block hover:bg-rose-800 transition">
+                                <i class="fas fa-phone mr-2"></i>Call 0789377351
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="heading-font text-2xl font-bold text-white mb-2">La Rose Lounge</h2>
+                    <p class="text-gray-300">Luxury accommodation in Gisenyi, Rwanda</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-300 hover:text-white">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-white">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-white">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 La Rose Lounge. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real implementation, you would send the form data to a server
+            // For this example, we'll just show an alert
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
