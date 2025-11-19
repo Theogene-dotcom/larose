@@ -84,6 +84,43 @@
                 transform: translateY(-5px);
             }
         }
+        
+        /* Mobile video fixes */
+        .hero-video-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+        }
+        @media (max-width: 768px) {
+            .hero-video-container {
+                height: 100vh;
+            }
+            /* Fallback image for when video doesn't load/play */
+            .hero-video-container::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url('https://res.cloudinary.com/daha4jihh/image/upload/v1762840496/2_bkmlld.jpg');
+                background-size: cover;
+                background-position: center;
+                z-index: -1;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -196,10 +233,10 @@
 
     <!-- Hero Section -->
     <section class="relative pt-24">
-        <div class="h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="hero-video-container">
             <!-- Background Video -->
-            <video autoplay muted loop class="absolute w-full h-full object-cover z-0">
-                <source src="https://res.cloudinary.com/daha4jihh/video/upload/v1763538114/homepage2_jiqcja.mp4" type="video/mp4" type="video/mp4">
+            <video autoplay muted loop playsinline class="hero-video" id="hero-video">
+                <source src="https://res.cloudinary.com/daha4jihh/video/upload/v1763538114/homepage2_jiqcja.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             
@@ -207,7 +244,7 @@
             <div class="absolute inset-0 hero-gradient z-10"></div>
             
             <!-- Content -->
-            <div class="relative z-20 text-center text-white px-4 max-w-4xl">
+            <div class="absolute inset-0 z-20 text-center text-white px-4 max-w-4xl mx-auto flex flex-col justify-center items-center">
                 <div class="mb-2">
                     <span class="inline-block bg-white bg-opacity-20 backdrop-blur-sm px-4 py-2 rounded-full text-sm english">Luxury Experience Awaits</span>
                     <span class="inline-block bg-white bg-opacity-20 backdrop-blur-sm px-4 py-2 rounded-full text-sm french">Expérience de Luxe Vous Attend</span>
@@ -735,6 +772,23 @@
             style.textContent = '.rotate-180 { transform: rotate(180deg); }';
             document.head.appendChild(style);
         }
+
+        // Mobile video handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('hero-video');
+            
+            // Try to play video on mobile
+            if (video) {
+                const playPromise = video.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        // Video autoplay failed, show fallback image
+                        console.log('Video autoplay failed:', error);
+                    });
+                }
+            }
+        });
     </script>
 </body>
 </html>
